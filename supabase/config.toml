@@ -1,0 +1,37 @@
+project_id = "vocaflow"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/auth/callback", "http://localhost:3000/auth/callback?next=/app/settings&recovery=1", "http://127.0.0.1:3000/auth/callback", "http://127.0.0.1:3000/auth/callback?next=/app/settings&recovery=1"]
+enable_signup = true
+minimum_password_length = 10
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+double_confirm_changes = true
+
+[auth.rate_limit]
+email_sent = 6
+sign_in_sign_ups = 30
+token_verifications = 30
